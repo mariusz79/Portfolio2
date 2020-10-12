@@ -44,3 +44,51 @@ body{
     transform: rotate(0) scale(1);
     opacity: 1;
 }
+
+#splashscreen {
+    position:fixed;
+    z-index:99999; 
+    width:100vw; 
+    height:100vh; 
+    background-color:rgb(245, 240, 240); 
+    cursor: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.tracking-in-expand {
+	-webkit-animation: tracking-in-expand 1.5s ease-in both;
+	        animation: tracking-in-expand 1.5s ease-in both;
+}
+
+/**
+ * ----------------------------------------
+ * animation tracking-in-expand
+ * ----------------------------------------
+ */
+@-webkit-keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes tracking-in-expand {
+  0% {
+    letter-spacing: -0.5em;
+    opacity: 0;
+  }
+  40% {
+    opacity: 0.6;
+  }
+  100% {
+    opacity: 1;
+  }
+}
