@@ -62,6 +62,34 @@ body{
 	        animation: tracking-in-expand 1.5s ease-in both;
 }
 
+.blink-2 {
+    width: 30px;
+    height: 15px;
+    background-color: black;
+	-webkit-animation: blink-2 5.9s infinite both;
+	        -webkit-animation: blink-2 5.9s infinite both;
+	                animation: blink-2 5.9s infinite both;
+}
+
+.menuOpen{
+    width: 0%;
+    height: 100vh;
+    background-color: grey;
+}
+
+.scale {
+    width: 50%;
+	-webkit-animation: scale-in-hor-left 0.7s linear;
+	        -webkit-animation: scale-in-hor-left 0.7s linear;
+                    animation: scale-in-hor-left 0.7s linear;
+}
+
+.fade-out {
+	-webkit-animation: fade-out 1s ease-out both;
+            animation: fade-out 1s ease-out both;
+            width: 50%;
+}
+
 /**
  * ----------------------------------------
  * animation tracking-in-expand
@@ -90,5 +118,135 @@ body{
   }
   100% {
     opacity: 1;
+  }
+}
+
+
+/**
+ * ----------------------------------------
+ * animation blink-2
+ * ----------------------------------------
+ */
+@-webkit-keyframes blink-2 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+@keyframes blink-2 {
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+/**
+ * ----------------------------------------
+ * animation scale-in-hor-left
+ * ----------------------------------------
+ */
+@-webkit-keyframes scale-in-hor-left {
+  0% {
+    width: 0%;
+    border-radius: 0 40px 40px 0;
+  }
+  90% {
+    width: 40%;
+    opacity: 1;
+     border-radius: 0 30px 30px 0;
+  }
+  95% {
+    width: 43%;
+    opacity: 1;
+     border-radius: 0 10px 10px 0;
+  }
+  97% {
+    width: 45%;
+    opacity: 1;
+     border-radius: 0 5px 5px 0;
+  }
+  98% {
+    width: 47%;
+    opacity: 1;
+     border-radius: 0 5px 5px 0;
+  }
+  99% {
+    width: 48%;
+    opacity: 1;
+     border-radius: 0 3px 3px 0;
+  }
+  100% {
+    width: 50%;
+    opacity: 1;
+     border-radius: 0;
+  }
+}
+
+@keyframes scale-in-hor-left {
+  0% {
+    width: 0%;
+    border-radius: 0 40px 40px 0;
+  }
+  90% {
+    width: 40%;
+    opacity: 1;
+     border-radius: 0 30px 30px 0;
+  }
+  95% {
+    width: 43%;
+    opacity: 1;
+     border-radius: 0 10px 10px 0;
+  }
+  97% {
+    width: 45%;
+    opacity: 1;
+     border-radius: 0 5px 5px 0;
+  }
+  98% {
+    width: 47%;
+    opacity: 1;
+     border-radius: 0 5px 5px 0;
+  }
+  99% {
+    width: 48%;
+    opacity: 1;
+     border-radius: 0 3px 3px 0;
+  }
+  100% {
+    width: 50%;
+    opacity: 1;
+     border-radius: 0;
+  }
+} 
+
+/**
+ * ----------------------------------------
+ * animation fade-out
+ * ----------------------------------------
+ */
+@-webkit-keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
