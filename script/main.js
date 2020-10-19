@@ -34,6 +34,32 @@ $("#window").wobbleWindow(settings);
 $("#window1").wobbleWindow(settings);
 $("#window2").wobbleWindow(settings);
 
+var settings1 = {
+	name: "my_window", //name
+	depth: 5, //depth for zIndex
+	offsetX: 0, //+ or - value the size of the div
+	offsetY: 0, //+ or - value the size of the div
+	moveTypeIn: "move", //method points follow the mouse
+	moveTypeOut: "wobble", //method points go back to init position
+	wobbleFactor: 0.98, //control the wobble effect
+	wobbleSpeed: 0.05, //control the wobble speed
+	moveSpeed: 1, //control the move speed
+	lineWidth: 0, //lineWidth
+	lineColor: "", //no value = no line. Use hex/rgba values
+	bodyColor: "#e8e1e1", //no value = no body color. Use hex/rgba values
+	numberOfXPoints: 9, //quantity of points horizontal. must be an odd int
+	numberOfYPoints: 5, //quantity of points vertical. must be an odd int
+	movementLeft: false, //enable/disable movement directions
+	movementRight: true, //enable/disable movement directions
+	movementTop: false, //enable/disable movement directions
+	movementBottom: false, //enable/disable movement directions
+	autoResize: true, //if true size will be automatically adjusted
+	autoResize: true, //enable/disable automatic size adjustement
+	debug: false, //enable/disable debug mode
+};
+
+$(".menu").wobbleWindow(settings1);
+
 //options for magic mouse cursor
 options = {
 	cursorOuter: "circle-basic",
@@ -84,26 +110,17 @@ anime.timeline({loop: true})
 
 
 //change cursor's appearance when on the right side
-var para = document.createElement("span");
-var para1 = document.createElement("span");
-var para2 = document.createElement("span");
-var node = document.createTextNode("^");
-var node1 = document.createTextNode("View");
-var node2 = document.createTextNode("^");
-
-para.appendChild(node);
-para1.appendChild(node1);
-para2.appendChild(node2);
-
 $(".rightSide").mouseenter(function () { 
 	$("#magicPointer").css({ 'width': '90px', 'height': '90px' }).addClass("flex");
-	$("#magicMouseCursor").addClass("hide");
-	$("#magicPointer").append(para, para1, para2);
+	$("#magicMouseCursor").css('display', 'none');
+	$("#magicPointer").append(
+		"<span>^</span><span>View</span><span>^</span>"
+	);
 });
 
 $(".rightSide").mouseleave(function () {
 	$("#magicPointer").css({ width: "5px", height: "5px" });
-	$("#magicMouseCursor").removeClass("hide");
+	$("#magicMouseCursor").css("display", "block");
 	$("#magicPointer").empty();
 
 });
@@ -113,10 +130,35 @@ $(".rightSide").mouseleave(function () {
 var menuOpen = false;
 $('.showMenu').click(function () {
 	if (menuOpen == false) {
-			$(".menu").addClass("scale").removeClass("fade-out");
+		$('.menuBackground').addClass('showMenuBackground');
+		setTimeout(function () {
+			$(".menu").removeClass("fade-out").addClass("scale");
 			menuOpen = !menuOpen;
+		}, 500);
 	} else if (menuOpen == true) {
-			$(".menu").addClass("fade-out").removeClass("scale");
+		$(".menu").removeClass("scale").addClass("fade-out");
+		$(".menuBackground").removeClass("showMenuBackground");
 			menuOpen = !menuOpen;
 		}
+});
+
+$(".closeMenu").click(function () {
+	$(".menu").removeClass("scale").addClass("fade-out");
+	$(".menuBackground").removeClass('showMenuBackground');
+	menuOpen = !menuOpen;
+});
+
+//show project
+$(".holder").click(function () {
+	var id = this.id;
+	$(".menuBackground").addClass("showMenuBackground");
+	setTimeout(function () {
+		$(id).addClass("scale-vert");
+	}, 500);
+});
+
+//close project
+$(".closeProject").click(function () {
+	$(".project").removeClass("scale-vert").addClass("fade-out");
+	$(".menuBackground").removeClass("showMenuBackground");
 });

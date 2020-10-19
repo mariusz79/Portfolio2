@@ -21,7 +21,9 @@
   background: rgb(172, 9, 9);
   border-radius: 50%;
   pointer-events: none;
-  transition: background 0.2s, width 0.2s, height 0.2s, box-shadow 0.2s; }
+  z-index: 120;
+  transition: background 0.2s, width 0.2s, height 0.2s, box-shadow 0.2s;
+}
  #magicPointer.is-hover {
     background: red; }
  #magicPointer.pointer-blur {
