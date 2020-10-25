@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap');
-@import "./css/animations.css";
+@import "animations.css";
 
 * {
 	box-sizing: border-box;
