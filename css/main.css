@@ -146,8 +146,6 @@ a {
 .opacity1 {
 	opacity: 1;
 }
-
- 
 	
 .rightSide {
 	flex: 1.8;
@@ -334,6 +332,7 @@ li:nth-of-type(1) {
 	right: 85%;
 	top: 29%;
 	font-size: 4rem;
+	font-weight: 300;
 }
 
 .menuContent > span:nth-of-type(2),
@@ -389,6 +388,7 @@ cursor: none;
 	height: -webkit-min-content;
 	height: -moz-min-content;
 	height: min-content;
+	z-index: 1;
 }
 
 .projectContent {
@@ -396,11 +396,12 @@ cursor: none;
 	display: flex;
 	flex-direction: column;
 	max-width: 75rem;
+	width: 100%;
 }
 
 .projectContent > img:first-of-type {
 	width: 100%;
-	height: 70vh;
+	height: auto;
 }
 
 .title {
@@ -424,28 +425,20 @@ cursor: none;
 
 .darkmode,
 .responsive {
-	height: 70vh;
 	background: #e6e1e1;
 	display: flex;
 	justify-content: space-between;
 	margin-bottom: 3rem;
 }
 
-.darkmode div,
-.responsive div {
-	transform: rotate(270deg);
-	position: relative;
-	height: -webkit-min-content;
-	height: -moz-min-content;
-	height: min-content;
-	top: 50%;
+.imageTitle{
 	letter-spacing: 4px;
 	font-size: 1.1rem;
 	display: flex;
 	align-items: center;
 }
 
-.darkmode div span {
+.imageTitle span {
 	width: 20px;
 	height: 20px;
 	background-color: blue;
@@ -454,32 +447,23 @@ cursor: none;
 	margin: 1rem;
 }
 
-.darkmode div span:first-of-type {
+.imageTitle  span:first-of-type {
 	background-color: #6e67e7;
 }
 
-.darkmode div span:nth-of-type(2) {
+.imageTitle span:nth-of-type(2) {
 	background-color: #4d7ce6;
 }
 
-.darkmode div span:last-of-type {
+.imageTitle  span:last-of-type {
 	background-color: #473bb1;
-}
-
-.darkmode img,
-.responsive img {
-	width: 60%;
-}
-
-.project2 .responsive img {
-	width: 80%;
 }
 
 .info {
 	font-size: 1.3rem;
 	display: flex;
 	justify-content: space-around;
-	margin-bottom: 2rem;
+	margin-bottom: 3rem;
 }
 
 .scale-vert {
@@ -504,9 +488,153 @@ svg circle {
 	stroke: rgba(0, 0, 0, 0.1);
 	stroke-width: 5px;
 	stroke-linecap: round;
-	fill: transparent;
+	fill: white;
 }
 
 svg .progress-bar {
 	stroke: black;
+}
+
+@media only screen and (max-width: 1440px) {
+  .menu{
+	  width: 70%;
+  }
+  .leftMiddle{
+  font-size: 3.5rem;
+  }
+}
+
+@media only screen and (max-width: 990px) {
+  .container {
+    flex-direction: column;
+  }
+  .leftSide{
+  flex:1.5;
+  padding-top: 0;
+  }
+  .leftBottom{
+ 	font-size: .9rem;
+  }
+  .leftMiddle{
+ 	margin: 2rem 0 0;
+  }
+  .rightSide{
+  flex:1;
+  padding-left: 0;
+  overflow-x: scroll;
+  overflow-y: hidden;
+  display: flex;
+  align-items: center;
+  }
+  ul{
+  display: flex;
+  }
+  li{
+	  margin-top: 0;
+  }
+  .holder{
+  width: 30rem;
+  }
+  .flex{
+	  flex-direction: row;
+  }
+  .menuContent{
+	margin-top: 0;
+	padding-left: 0;
+	align-items: flex-start;
+	margin: 3rem 1.5rem;
+	width: 80%;
+  }
+  .arrow{
+	  padding-right: 0;
+  }
+  .arrow > span,
+  .arrow img:first-of-type{
+	  display: none;
+  }
+  .arrow img:last-of-type{
+	  height: 130px;
+  }
+  .menuContent > span:nth-of-type(1) {
+	position: static;
+	font-size: 2.5rem;
+	margin-top: 2rem;
+  }
+  .menuContent > span:nth-of-type(2),
+  .menuContent > span:last-of-type {
+    margin-top: 2rem;
+    font-size: 1rem;
+    line-height: 1.3em;
+  }
+  .menuFooter{
+  margin-bottom: 1rem;
+  }
+  .darkmode, .responsive{
+   background: none;
+   }
+}
+
+@media only screen and (max-width: 667px) {
+  .menu{
+	  width: 100%;
+  }
+  .showMenu{
+    padding: 0;
+	border: none;
+  }
+  .leftTop span {
+	  display: none;
+  }
+  .leftSide{
+	flex: 1.7;
+    justify-content: space-between;
+  }
+  .leftMiddle{
+	 margin: 0;
+	 font-size: 2.6rem;
+  }
+  .leftMiddle, .leftBottom {
+    padding-left: 0;
+  }
+  .leftTop > div:first-of-type {
+    font-size: .7rem;
+  }
+  .blink-2{
+	width: 15px;
+  }
+  .projectContent{
+   padding: 0rem 2rem;
+   font-weight: 300;
+  }
+  .imageTitle span {
+    margin: .3rem;
+  }	
+  .title{
+	  font-size: 2.5rem;
+	  font-weight: 400;
+  }
+  .projectContent > span:first-of-type {
+    font-size: 1.2rem;
+    padding: 2rem 0rem;
+    line-height: normal;
+  }
+  .info{
+	  display: block;
+	  }
+	  .info span{
+	  padding: 5px;
+	  }
+  .holder{
+	  width: 27rem;
+  }
+}
+
+@media only screen and (max-width: 450px) {
+  .leftMiddle{
+  font-size: 2.2rem;
+  }
+  .holder{
+	  width: 22rem;
+	  margin-top: 2rem;
+  }
 }

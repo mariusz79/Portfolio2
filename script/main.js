@@ -1,3 +1,16 @@
+//after loading center view on second slide
+$(document).ready(function () {
+	const clientWidth = $(window).width();
+	if (clientWidth > 990) {
+		$(".rightSide").scrollTop($(window).height() / 4);
+	} else if (clientWidth < 990) {
+		$(".rightSide").scrollLeft($(".rightSide").scrollLeft() + 70);
+	}
+	
+	
+});
+
+
 //wobble effect on windows
 var settings = {
 	name: "my_window", //name
@@ -114,19 +127,21 @@ function splashScreen() {
 
 
 //change cursor's appearance when on the right side
-$(".rightSide").mouseenter(function () { 
-	$("#magicPointer").css({ 'width': '90px', 'height': '90px' }).addClass("flex");
-	$("#magicMouseCursor").css('display', 'none');
-	$("#magicPointer").append(
-		"<span>^</span><span>View</span><span>^</span>"
-	);
+$(".rightSide").mouseenter(function () {
+	$("#magicPointer").css({ width: "90px", height: "90px" }).addClass("flex");
+	$("#magicMouseCursor").css("display", "none");
+	const clientWidth = $(window).width();
+	if (clientWidth > 990) {
+		$("#magicPointer").append("<span>^</span><span>View</span><span>^</span>");
+	} else if (clientWidth < 990) {
+		$("#magicPointer").append("<span><</span><span>View</span><span><</span>");
+	}
 });
 
 $(".rightSide").mouseleave(function () {
 	$("#magicPointer").css({ width: "5px", height: "5px" });
 	$("#magicMouseCursor").css("display", "block");
 	$("#magicPointer").empty();
-
 });
 
 $(".closeProject").mouseenter(function () {
