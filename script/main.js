@@ -1,10 +1,3 @@
-//after loading center view on second slide
-$(document).ready(function () {
-	$('.rightSide').scrollTop($(window).height() / 3);
-	
-});
-
-
 //wobble effect on windows
 var settings = {
 	name: "my_window", //name
@@ -33,6 +26,7 @@ var settings = {
 $("#window").wobbleWindow(settings);
 $("#window1").wobbleWindow(settings);
 $("#window2").wobbleWindow(settings);
+$("#window3").wobbleWindow(settings);
 
 var settings1 = {
 	name: "my_window", //name
@@ -46,7 +40,7 @@ var settings1 = {
 	moveSpeed: 1, //control the move speed
 	lineWidth: 0, //lineWidth
 	lineColor: "", //no value = no line. Use hex/rgba values
-	bodyColor: "#e8e1e1", //no value = no body color. Use hex/rgba values
+	bodyColor: "#F1F2F2", //no value = no body color. Use hex/rgba values
 	numberOfXPoints: 9, //quantity of points horizontal. must be an odd int
 	numberOfYPoints: 5, //quantity of points vertical. must be an odd int
 	movementLeft: false, //enable/disable movement directions
@@ -63,7 +57,6 @@ $(".menu").wobbleWindow(settings1);
 //options for magic mouse cursor
 options = {
 	cursorOuter: "circle-basic",
-	hoverEffect: "circle-move",
 	hoverItemMove: false,
 	defaultCursor: false,
 	outerWidth: 30,
@@ -74,39 +67,50 @@ magicMouse(options);
 
 //welcome screen, reveal after website is loaded
 function splashScreen() {
+	$(".ml12").css("display", "inline-block");
+	// Wrap every letter in a span
+	var textWrapper = document.querySelector(".ml12");
+	textWrapper.innerHTML = textWrapper.textContent.replace(
+		/\S/g,
+		"<span class='letter'>$&</span>"
+	);
+
+	anime
+		.timeline({ loop: true })
+		.add({
+			targets: ".ml12 .letter",
+			translateX: [40, 0],
+			translateZ: 0,
+			opacity: [0, 1],
+			easing: "easeOutExpo",
+			duration: 1200,
+			delay: (el, i) => 500 + 30 * i,
+		})
+		.add({
+			targets: ".ml12 .letter",
+			translateX: [0, -30],
+			opacity: [1, 0],
+			easing: "easeInExpo",
+			duration: 1100,
+			delay: (el, i) => 100 + 30 * i,
+		});
 	setTimeout(function () {
-		$("#splashscreen").css('display', 'none');
+		$("#splashscreen").css("display", "none");
 		$(".leftMiddleText").addClass("animateLeftMiddle");
 		$(".leftTop").addClass("fadein1animation");
 		$(".leftBottom").addClass("fadein1animation");
-	}, 3000);
+		$("#window").addClass("moveWindow");
+		$("#window1").addClass("moveWindow1");
+		$("#window2").addClass("moveWindow2");
+		$("#window3").addClass("moveWindow3");
+	}, 4000);
 	setTimeout(function () {
 		$(".leftTop").addClass("opacity1");
 		$(".leftBottom").addClass("opacity1");
 	}, 5500);
 };
 
-// Wrap every letter in a span
-var textWrapper = document.querySelector('.ml12');
-textWrapper.innerHTML = textWrapper.textContent.replace(/\S/g, "<span class='letter'>$&</span>");
 
-anime.timeline({loop: true})
-  .add({
-    targets: '.ml12 .letter',
-    translateX: [40,0],
-    translateZ: 0,
-    opacity: [0,1],
-    easing: "easeOutExpo",
-    duration: 1200,
-    delay: (el, i) => 500 + 30 * i
-  }).add({
-    targets: '.ml12 .letter',
-    translateX: [0,-30],
-    opacity: [1,0],
-    easing: "easeInExpo",
-    duration: 1100,
-    delay: (el, i) => 100 + 30 * i
-  });
 
 
 //change cursor's appearance when on the right side
@@ -125,6 +129,29 @@ $(".rightSide").mouseleave(function () {
 
 });
 
+$(".closeProject").mouseenter(function () {
+	$(".closeProject span").css({ color: "blue", transform: 'rotate(0deg)' });
+});
+$(".closeProject").mouseleave(function () {
+	$(".closeProject span").css({ color: "black", transform: "rotate(270deg)" });
+});
+
+$(".onHover").mouseenter(function () {
+	$("#magicPointer").css({
+		width: "40px",
+		height: "40px",
+		background: "none",
+		border: "1px solid rgb(211, 4, 4)"
+	});
+});
+$(".onHover").mouseleave(function () {
+	$("#magicPointer").css({
+		width: "5px",
+		height: "5px",
+		background: "rgb(211, 4, 4)",
+		border: 'none'
+	});
+});
 
 //menu
 var menuOpen = false;
@@ -153,12 +180,37 @@ $(".holder").click(function () {
 	var id = this.id;
 	$(".menuBackground").addClass("showMenuBackground");
 	setTimeout(function () {
-		$(id).addClass("scale-vert");
+		$(id).removeClass("fade-out1").addClass("scale-vert");
+		$("body").css("overflow-y", "unset");
+
+		//progressbar on scroll
+		const totalLength = $(".progress-bar").get(0).getTotalLength();
+		$(".progress-bar").css({
+			strokeDasharray: totalLength,
+			strokeDashoffset: totalLength,
+		});
+
+		$(window).scroll(function () {
+			setProgress(totalLength);
+		});
+
+		function setProgress(totalLength) {
+			const clientHeight = $(window).height();
+			const scrollHeight = $(".project").innerHeight();
+			const scrollTop = $(window).scrollTop();
+
+			const percentage = scrollTop / (scrollHeight - clientHeight);
+			const val = totalLength - totalLength * percentage;
+			$(".progress-bar").css("strokeDashoffset", val);
+		}
 	}, 500);
+
+	
 });
 
 //close project
 $(".closeProject").click(function () {
-	$(".project").removeClass("scale-vert").addClass("fade-out");
+	$(".project").removeClass("scale-vert").addClass("fade-out1");
 	$(".menuBackground").removeClass("showMenuBackground");
+	$("body").css('overflow-y', 'hidden');
 });
