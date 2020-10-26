@@ -510,13 +510,15 @@ svg .progress-bar {
   }
   .leftSide{
   flex:1.5;
-  padding-top: 0;
+  padding: 1rem 2rem 0.5rem;
+  justify-content: flex-start;
   }
   .leftBottom{
  	font-size: .9rem;
   }
   .leftMiddle{
- 	margin: 2rem 0 0;
+	 margin: 2rem 0 0;
+	 font-size: 3rem;
   }
   .rightSide{
   flex:1;
@@ -525,6 +527,7 @@ svg .progress-bar {
   overflow-y: hidden;
   display: flex;
   align-items: center;
+  height: auto;
   }
   ul{
   display: flex;
@@ -533,7 +536,8 @@ svg .progress-bar {
 	  margin-top: 0;
   }
   .holder{
-  width: 30rem;
+  width: 25rem;
+  height:20rem;
   }
   .flex{
 	  flex-direction: row;
@@ -586,8 +590,9 @@ svg .progress-bar {
 	  display: none;
   }
   .leftSide{
-	flex: 1.7;
-    justify-content: space-between;
+	flex: 1.4;
+	justify-content: space-between;
+	padding: 0 2rem 2rem;
   }
   .leftMiddle{
 	 margin: 0;
@@ -626,6 +631,10 @@ svg .progress-bar {
 	  }
   .holder{
 	  width: 27rem;
+  }
+  .darkmode img, .responsive img{
+	  width: 100%;
+	  height: auto;
   }
 }
 

@@ -4,10 +4,21 @@ $(document).ready(function () {
 	if (clientWidth > 990) {
 		$(".rightSide").scrollTop($(window).height() / 4);
 	} else if (clientWidth < 990) {
-		$(".rightSide").scrollLeft($(".rightSide").scrollLeft() + 70);
+		$(".rightSide").scrollLeft(70);
 	}
 	
-	
+	if (clientWidth > 660) {
+		//options for magic mouse cursor
+		options = {
+			cursorOuter: "circle-basic",
+			hoverItemMove: false,
+			defaultCursor: false,
+			outerWidth: 30,
+			outerHeight: 30,
+			color: "black",
+		};
+		magicMouse(options);
+	}
 });
 
 
@@ -66,17 +77,6 @@ var settings1 = {
 };
 
 $(".menu").wobbleWindow(settings1);
-
-//options for magic mouse cursor
-options = {
-	cursorOuter: "circle-basic",
-	hoverItemMove: false,
-	defaultCursor: false,
-	outerWidth: 30,
-	outerHeight: 30,
-	color: "black",
-};
-magicMouse(options);
 
 //welcome screen, reveal after website is loaded
 function splashScreen() {
