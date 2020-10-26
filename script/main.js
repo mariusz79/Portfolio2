@@ -211,7 +211,7 @@ $(".holder").click(function () {
 
 		function setProgress(totalLength) {
 			const clientHeight = $(window).height();
-			const scrollHeight = $(".project").innerHeight();
+			const scrollHeight = $(id).innerHeight();
 			const scrollTop = $(window).scrollTop();
 
 			const percentage = scrollTop / (scrollHeight - clientHeight);

@@ -506,7 +506,9 @@ svg .progress-bar {
 
 @media only screen and (max-width: 990px) {
   .container {
-    flex-direction: column;
+	flex-direction: column;
+	height: 100%;
+	overflow: visible;
   }
   .leftSide{
   flex:1.5;
@@ -538,6 +540,7 @@ svg .progress-bar {
   .holder{
   width: 25rem;
   height:20rem;
+  display: flex;
   }
   .flex{
 	  flex-direction: row;
