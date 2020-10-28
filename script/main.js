@@ -196,8 +196,9 @@ $(".holder").click(function () {
 	$(".menuBackground").addClass("showMenuBackground");
 	setTimeout(function () {
 		$(id).removeClass("fade-out1").addClass("scale-vert");
-		$("body").css("overflow-y", "unset");
-
+		$("body").css("overflow-y", "scroll");
+		 
+		$(".menu").css("display", "none");
 		//progressbar on scroll
 		const totalLength = $(".progress-bar").get(0).getTotalLength();
 		$(".progress-bar").css({
@@ -227,5 +228,7 @@ $(".holder").click(function () {
 $(".closeProject").click(function () {
 	$(".project").removeClass("scale-vert").addClass("fade-out1");
 	$(".menuBackground").removeClass("showMenuBackground");
-	$("body").css('overflow-y', 'hidden');
+	$("body").css("overflow-y", "hidden");
+	$(".menu").css("display", "flex");
+	
 });
